@@ -2,6 +2,7 @@ const express = require('express');
 require('dotenv').config();
 const cors = require('cors');
 const MongoClient = require('mongodb').MongoClient;
+const objectId = require('mongodb').ObjectId;
 const ejs = require('ejs');
 const bodyParser = require('body-parser');
 
@@ -52,20 +53,23 @@ app.post('/addMonster', (req,res) => {
 })
 
 app.put('/updateMonster', (req,res) => {
-    const type = req.body.type;
+    const query = {type: req.body.type}
+    const item = {
+        //type: req.body.type,
+        $set: req.body
+    }
     console.log("updating a monster");
     console.log(req.body);
-    collection.findOneAndUpdate({
-        type: type,
-        // features: req.body.features
-    }, {
-        $set: {features: req.body.features}
-    })
+    collection.findOneAndUpdate(query, item, {upsert: false})
     .then(result => {
+        //db.close();
         console.log(result);
-        res.redirect("/");
+        //res.redirect("/");
+        res.json("success");
     })
-    .catch(error => console.error(error));
+    .catch(error => {
+        console.error(error)
+    });
 })
 
 app.listen(PORT, function() {
