@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Favorite Monsters</title>
+</head>
+
+<body>
+    <h1>You're using the My Favorite Monsters API endpoint</h1>
+    <form action="/addMonster" method="POST">
+        <input type="text" placeholder="type" name="type" id="typeInput">
+        <input type="text" placeholder="feature1, feature2" name="features" id="featuresInput">
+        <button type="submit">Submit New Monster</button>
+    </form>
+    <h2>Monsters</h2>
+    <ul class="info">
+        <% for(let i=0; i < info.length; i++) {%>
+            <li class="info">
+                <span>
+                    <%= info[i].type %>
+                </span>:
+                <span>
+                    <%= info[i].features %>
+                </span>
+            </li>
+            <% } %>
+    </ul>
+    <form action="/updateMonster" method="PUT">
+        <input type="text" name="type" id="typeUpdate">
+        <input type="text" name="features" id="featuresUpdate">
+        <button type="submit" id="update-button">Update a Monster</button>
+    </form>
+    <script src="/main.js"></script>
+</body>
+
+</html>
