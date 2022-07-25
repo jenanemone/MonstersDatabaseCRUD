@@ -72,6 +72,21 @@ app.put('/updateMonster', (req,res) => {
     });
 })
 
+//hmm no worky
+app.delete('/deleteMonster:type', (req,res) => {
+    collection.deleteOne(
+        {type: req.body.type},
+        options
+    )
+    .then(result => {
+        if (result.deletedCount === 0) {
+            return res.json('Nothing to delete')
+        }
+        res.json('Deleted a monster')
+    })
+    .catch(error => console.error(error))
+})
+
 app.listen(PORT, function() {
     console.log(`listening on port ${PORT}`);
 })

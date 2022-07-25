@@ -12,9 +12,29 @@ update.addEventListener('click', _ => {
         }
     )
     .then(() => {
-        window.location.reload()
+        window.location.reload(true)
     })
     .catch((err) => {
         console.error(err)
     })
 })
+
+const deletayz = document.querySelectorAll('delete');
+// hmm no worky
+deletayz.forEach(e => e.addEventListener('click', (e) => {
+    let monster = e.target.type
+    console.log(`monster: ${monster}`)
+    fetch('/deleteMonster', {
+        method: 'delete',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+            type: monster
+        })
+    })
+    .then(res => {
+        if (res.ok) return res.json()
+    })
+    .then(data => {
+        window.location.reload(true)
+    })
+}))
