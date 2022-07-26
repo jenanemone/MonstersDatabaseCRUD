@@ -73,7 +73,7 @@ app.put('/updateMonster', (req,res) => {
 })
 
 //hmm no worky
-app.delete('/deleteMonster:type', (req,res) => {
+app.delete('/delete', (req,res) => {
     collection.deleteOne(
         {type: req.body.type},
         options

@@ -22,9 +22,10 @@ update.addEventListener('click', _ => {
 const deletayz = document.querySelectorAll('delete');
 // hmm no worky
 deletayz.forEach(e => e.addEventListener('click', (e) => {
+    console.log('delete button was clicked')
     let monster = e.target.type
     console.log(`monster: ${monster}`)
-    fetch('/deleteMonster', {
+    fetch('/delete', {
         method: 'delete',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
