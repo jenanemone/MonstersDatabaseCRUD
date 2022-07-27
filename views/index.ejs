@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- <link rel="stylesheet" href="../public/style.css"> -->
+    <link rel="shortcut icon" type="image/x-icon" href="../public/assets/favicon.ico">
     <title>My Favorite Monsters</title>
 </head>
 
@@ -21,21 +23,19 @@
             <li class="info">
                 <span>
                     <%= info[i].type %>
-                </span>:
-                <span>
-                    <%= info[i].features %>
                 </span>
                 <span>
-                    <button>Delete</button>
+                 <%= info[i].features %>
+                </span>
+                <span class="deleter">
+                    Delete
                 </span>
             </li>
             <% } %>
     </ul>
-    <!-- <form action="/updateMonster" method="POST"> -->
-        <input type="text" name="type" id="typeUpdate">
-        <input type="text" name="features" id="featuresUpdate">
-        <button type="submit" id="update-button">Update a Monster</button>
-    <!-- </form> -->
+    <input type="text" name="type" id="typeUpdate">
+    <input type="text" name="features" id="featuresUpdate">
+    <button type="submit" id="update-button">Update a Monster</button>
     <script src="/main.js"></script>
 </body>
 
